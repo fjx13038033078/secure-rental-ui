@@ -12,12 +12,12 @@
         <h3 class="title">{{ title }}</h3>
         <p class="subtitle">基于用户身份验证与数据安全存储的汽车租赁系统</p>
       </div>
-      <el-form-item v-if="tenantEnabled" prop="tenantId" class="form-item-animate">
+      <!-- <el-form-item v-if="tenantEnabled" prop="tenantId" class="form-item-animate">
         <el-select v-model="loginForm.tenantId" filterable :placeholder="proxy.$t('login.selectPlaceholder')" style="width: 100%">
           <el-option v-for="item in tenantList" :key="item.tenantId" :label="item.companyName" :value="item.tenantId"></el-option>
           <template #prefix><svg-icon icon-class="company" class="el-input__icon input-icon" /></template>
         </el-select>
-      </el-form-item>
+      </el-form-item> -->
       <el-form-item prop="username" class="form-item-animate">
         <el-input v-model="loginForm.username" type="text" size="large" auto-complete="off" :placeholder="proxy.$t('login.username')">
           <template #prefix><svg-icon icon-class="user" class="el-input__icon input-icon" /></template>
