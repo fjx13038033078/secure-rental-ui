@@ -10,8 +10,8 @@
         </el-row>
       </template>
 
-      <el-table v-loading="loading" border :data="orderList">
-        <el-table-column label="订单号" align="center" prop="orderNo" width="180" />
+      <el-table v-loading="loading" border :data="orderList" style="width: 100%">
+        <el-table-column label="订单号" align="center" prop="orderNo" min-width="180" />
         <el-table-column label="客户ID" align="center" prop="customerId" width="90" />
         <el-table-column label="车辆ID" align="center" prop="carId" width="90" />
         <el-table-column label="起租日期" align="center" prop="rentStartDate" width="120" />
