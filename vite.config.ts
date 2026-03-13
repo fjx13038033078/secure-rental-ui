@@ -28,6 +28,12 @@ export default defineConfig(({ mode, command }) => {
           changeOrigin: true,
           ws: true,
           rewrite: (path) => path.replace(new RegExp('^' + env.VITE_APP_BASE_API), '')
+        },
+        // MinIO 旧数据兼容：数据库中存 127.0.0.1:9000 直连 URL 时，通过代理访问
+        '/minio-proxy': {
+          target: 'http://127.0.0.1:9000',
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/minio-proxy/, '')
         }
       }
     },

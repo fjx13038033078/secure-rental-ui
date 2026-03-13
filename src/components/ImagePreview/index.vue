@@ -10,6 +10,7 @@
 
 <script setup lang="ts">
 import { propTypes } from '@/utils/propTypes';
+import { toProxyUrlIfNeeded } from '@/utils/oss';
 
 const props = defineProps({
   src: propTypes.string.def(''),
@@ -24,26 +25,16 @@ const props = defineProps({
 });
 
 const realSrc = computed(() => {
-  if (!props.src) {
-    return;
-  }
-  const real_src = props.src.split(',')[0];
-  return real_src;
+  if (!props.src) return;
+  return toProxyUrlIfNeeded(props.src.split(',')[0]);
 });
 
 const realSrcList = computed(() => {
-  if (!props.src) {
-    return [];
-  }
-  const real_src_list = props.src.split(',');
-  const srcList: string[] = [];
-  real_src_list.forEach((item: string) => {
-    if (item.trim() === '') {
-      return;
-    }
-    return srcList.push(item);
-  });
-  return srcList;
+  if (!props.src) return [];
+  return props.src
+    .split(',')
+    .filter((item) => item.trim())
+    .map((item) => toProxyUrlIfNeeded(item));
 });
 
 const realWidth = computed(() => (typeof props.width == 'string' ? props.width : `${props.width}px`));
